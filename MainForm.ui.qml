@@ -1,29 +1,27 @@
 import QtQuick 2.5
 
-Rectangle {
-    property alias mouseArea: mouseArea
-    property alias textEdit: textEdit
+Image{
 
-    width: 360
-    height: 360
+    source: "/src/qwe.png"
+    Rectangle{
 
-    MouseArea {
-        id: mouseArea
-        anchors.fill: parent
+       id: box
+       width: 300
+       height: 300
+       color: "red"
+
+       MouseArea
+       {
+           anchors.fill: box
+           onClicked:
+           {
+               box.color = (box.color ==  "#ff0000")  ?  "green" :  "red"
+           }
+       }
     }
 
-    TextEdit {
-        id: textEdit
-        text: qsTr("Enter some text...")
-        verticalAlignment: Text.AlignVCenter
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: 20
-        Rectangle {
-            anchors.fill: parent
-            anchors.margins: -10
-            color: "transparent"
-            border.width: 2
-        }
-    }
+
 }
+
+
+
