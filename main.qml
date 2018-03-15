@@ -43,10 +43,19 @@ Window {
         radius: 10
         border.width: 2
         Text{
+            id: shortDes
             x: 8
             y: 14
             text: "Short theme description"
         }
+        MouseArea{
+            anchors.fill: parent
+
+            onClicked: {
+                parent.color = (parent.color == "#fbebff") ?  "#ff00ff" : "#fbebff"
+                 shortDes.text = "clicked"
+        }
+            }
     }
 
     Rectangle{
