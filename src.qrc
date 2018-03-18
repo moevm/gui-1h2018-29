@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>src/qwe.png</file>
+        <file>src/search-512.png</file>
     </qresource>
 </RCC>

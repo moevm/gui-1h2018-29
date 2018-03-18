@@ -1,106 +1,246 @@
-import QtQuick 2.9
+import QtQuick 2.5
 import QtQuick.Window 2.2
-import QtQuick.Controls 2.2
-import QtQuick.Controls.Material 2.2
+import QtQuick.Controls 2.3
+import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtGraphicalEffects 1.0
+
 
 Window {
     id: window
     visible: true
     width: 840
     height: 480
-    title: qsTr("marxx")
+    title: qsTr("LingSrikeTurbo")
+    Material.theme: Material.Light
 
 
 
-    ListModel {
-        id: notesModel
 
-        ListElement { name: "note 1"; type: "note"; text: "this is note 1" }
-        ListElement { name: "note 2"; type: "note"; text: "this is note 2" }
-        ListElement { name: "note 3"; type: "note"; text: "this is note 3" }
-    }
-
-    TextField {
-        id: textField
-        x: 301
-        y: 11
-        text: qsTr("Text Field")
-    }
-
-    Button {
-        id: button
-        x: 427
-        y: 11
-        text: qsTr("Search")
-    }
-    Rectangle{
-        x: 41
-        y: 113
-        height: 65
-        width: parent.width - 150
-        color: "#fbebff"
-        border.color: "black"
-        radius: 10
-        border.width: 2
-        Text{
-            id: shortDes
-            x: 8
-            y: 14
-            text: "Short theme description"
-        }
-        MouseArea{
-            anchors.fill: parent
-
-            onClicked: {
-                parent.color = (parent.color == "#fbebff") ?  "#ff00ff" : "#fbebff"
-                 shortDes.text = "clicked"
-        }
-            }
-    }
-
-    Rectangle{
+    TabBar {
+        id: bar
         x: 0
-        y: 430
+        y: 432
         width: parent.width
-        height: 50
-        color: "#f0f0ff"
-
-        Button {
-            id: button1
-            x: 235
-            y: 8
+        anchors.bottom: parent.bottom
+        TabButton {
             text: qsTr("Study")
         }
-
-        Button {
-            id: button2
-            x: 327
-            y: 8
+        TabButton {
+            text: qsTr("Profile")
+        }
+        TabButton {
             text: qsTr("Words")
         }
-
-        Button {
-            id: button3
-            x: 417
-            y: 8
+        TabButton {
             text: qsTr("Spritz")
         }
+    }
 
-        Button {
-            id: button4
-            x: 505
-            y: 8
-            text: qsTr("Info")
+    StackLayout {
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 480
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        currentIndex: bar.currentIndex
+        Item {
+            id: studyTab
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+
+
+            Rectangle{
+                width: 840
+                height: 35
+                //Material.color: "#ea1863"
+                color: "#ea1863"
+                anchors.rightMargin: 0
+                anchors.leftMargin: 0
+                anchors.topMargin: 0
+                opacity: 0.5
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: parent.top
+                Text{
+                    x: 0
+                    y: 0
+                    text: "v1.0"
+                    font.pixelSize: 14
+                    font.italic: true
+                }
+
+
+                Item{
+                    width: 205
+                    height: 35
+
+                    anchors.right: parent.right
+                    TextField {
+                        id: textField
+                        anchors.left: parent.left
+                        width: 161
+                        height: 40
+                        text: qsTr("Text Field")
+                    }
+
+                    Button {
+                        anchors.right: parent.right
+                        id: button
+
+                        width: 40
+                        height: 40
+                        Image {
+                            anchors.fill: parent
+                            anchors.margins: 5
+                            height: 30
+                            width: 30
+                            id: search
+                            source: "/src/search-512.png"
+                        }
+                    }
+
+                }
+            }
+
+//todo: Сделать модельку под лист
+            ListModel {
+                id: lessonsModel
+
+                ListElement {
+                    name: "Words"
+                    description: "Studying words"
+                }
+                ListElement {
+                    name: "Translate"
+                    description: "Translating"
+                }
+                ListElement {
+                    name: "Listening"
+                    description: "Listening english text"
+                }
+
+                ListElement {
+                    name: "Words1"
+                    description: "Studying words1"
+                }
+                ListElement {
+                    name: "Translate1"
+                    description: "Translating1"
+                }
+                ListElement {
+                    name: "Listening1"
+                    description: "Listening english text1"
+                }
+            }
+
+            Component {
+                    id: lessonsDelegate
+
+
+                        Pane {
+                               id: delegateD
+                               width:  parent.width
+                               height: 80
+
+
+                               Material.elevation: 6
+
+
+                               smooth: true
+                               visible: true
+
+                               anchors.left: parent.left
+                               anchors.right: parent.right
+
+                               antialiasing: true
+
+                               ColumnLayout{
+                                    spacing: 15
+
+
+                                    Text {
+                                        text: name
+                                        font.pixelSize: 15
+
+                                    }
+
+
+                                    Text {
+                                        text: description
+
+                                    }
+
+
+
+                               }
+
+
+
+                               MouseArea{
+                                   anchors.fill: parent
+                                   hoverEnabled: true
+                                   property var hov: false
+
+                                   onHoveredChanged: {
+                                        hov = !hov
+                                        delegateD.height = (hov == true) ? 90 : 80
+                                   }
+                               }
+
+                    }
+
+
+
+
+
+            }
+
+
+
+            ListView{
+                x: 0
+                y: 36
+                width: 840
+                height: 388
+                anchors.leftMargin: 0
+                anchors.rightMargin: 0
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                transformOrigin: Item.Center
+                opacity: 0.9
+                boundsBehavior: Flickable.StopAtBounds
+                model: lessonsModel
+                delegate: lessonsDelegate
+                spacing: 15
+                clip: true
+            }
+
         }
+        Item {
+            id: profileTab
+        }
+        Item {
+            id: wordsTab
+        }
+        Item {
+            id: spritzTab
 
+
+
+        }
     }
 
-    Label {
-        id: label
-        x: 41
-        y: 78
-        width: 152
-        height: 29
-        text: qsTr("Theme")
-    }
+
+
+
+
+
+
+
 }
