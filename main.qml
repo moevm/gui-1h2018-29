@@ -55,6 +55,7 @@ Window {
 
 
             Rectangle{
+                id: deleg
                 width: 840
                 height: 35
                 //Material.color: "#ea1863"
@@ -143,6 +144,7 @@ Window {
 
 
                         Pane {
+                               //Rectangle{
                                id: delegateD
                                width:  parent.width
                                height: 80
@@ -164,14 +166,14 @@ Window {
 
 
                                     Text {
-                                        text: name
+                                        text: model.modelData.theme_name
                                         font.pixelSize: 15
 
                                     }
 
 
                                     Text {
-                                        text: description
+                                        text: model.modelData.task_description
 
                                     }
 
@@ -188,14 +190,22 @@ Window {
 
                                    onHoveredChanged: {
                                         hov = !hov
+
+                                        //parent.color = "#ea1863"
+                                       //delegateD.background.
+                                         //delegateD.color = "#ea1863"
+                                        //opacity: 0.5
                                         delegateD.height = (hov == true) ? 90 : 80
+                                   }
+                                   onClicked: {
+
                                    }
                                }
 
                     }
 
 
-
+           // }
 
 
             }
@@ -215,7 +225,7 @@ Window {
                 transformOrigin: Item.Center
                 opacity: 0.9
                 boundsBehavior: Flickable.StopAtBounds
-                model: lessonsModel
+                model: myModel
                 delegate: lessonsDelegate
                 spacing: 15
                 clip: true
