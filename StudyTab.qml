@@ -128,14 +128,14 @@ Item {
 
                            onHoveredChanged: {
                                 hov = !hov
-                                //delegateD.height = (hov == true) ? 90 : 80
+                                delegateD.height = (hov == true) ? 90 : 80
                            }
 
                            onClicked: {
                                 //back.visible = true
                                var theme = controller.getTheme(model.modelData.theme_name)
                                //var list = theme.getListOfTasks();
-                               ctxList = theme;
+                               //ctxList = theme;
 
                                stack.push("qrc:/TaskForm.qml")
                            }

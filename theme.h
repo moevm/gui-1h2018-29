@@ -22,21 +22,20 @@ public:
     Theme& operator=(const Theme &other);
 
     //getters
-    //QList<Task> *getTaskList();
     QString getThemeName() const;
     QString getTaskDesc() const;
     //setters
     void setThemeName(const QString &themeName);
     //void setTaskList(QList<Task> taskList);
     void setTaskDesc(const QString &taskDesc);
-    void setListOfTasks(QList<QObject*> lessons);
+    void setListOfTasks(QList<QObject*> tasks);
     Q_INVOKABLE QList<QObject*> getListOfTasks();
 signals:
     void nameChanged();
     void descChanged();
 private:
     //List of task to this theme
-    QList<QObject*> lessons;
+    QList<QObject*> tasks;
     //theme name
     QString theme_name ;
     //Task description

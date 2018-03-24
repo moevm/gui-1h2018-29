@@ -11,13 +11,15 @@ class ThemesModel : public QObject
 public:
     explicit ThemesModel(QObject *parent = nullptr);
 
-    QList<Theme*> themesList;
+    QList<QObject*> getTasksList(QString themeName);
+    QList<QObject*> getThemesList();
 
 signals:
 
 private:
+    QList<QObject*> themesList;
 
-
+    void fillListThemes();
 
 public slots:
 

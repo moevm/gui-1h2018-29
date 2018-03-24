@@ -11,6 +11,11 @@ Controller::Controller(QList<Theme*> list,QObject *parent) : QObject(parent)
     this->m_list = list;
 }
 
+Controller::Controller(ThemesModel *themesModel, QObject *parent) : QObject(parent)
+{
+    this->model=themesModel;
+}
+
 void Controller::setEngine(QQmlApplicationEngine *engine, QQmlContext *ctxt){
     this->m_engine = engine;
     this->m_ctxt = ctxt;
@@ -46,11 +51,18 @@ QObject* Controller::getTheme(QString s) {
         if(temp->getThemeName() == s){
             m_chosen = temp;
         }
-
         return curr;
     }
     qDebug() << m_chosen->getListOfTasks() ;
-
-
-
 }
+
+ThemesModel* Controller::getThemesModel() {
+    return this->model;
+}
+
+void Controller::setThemesModel(ThemesModel *themesModel)
+{
+    this->model=themesModel;
+}
+
+

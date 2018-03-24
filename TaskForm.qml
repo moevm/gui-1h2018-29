@@ -20,7 +20,7 @@ Item {
 
     Rectangle{
         Component.onCompleted: {
-            init();
+            //init();
         }
         id: back
         x: 0
@@ -78,10 +78,10 @@ Item {
             delegate: taskDelegate
 
             Component.onCompleted: {
-                var lst = ctxList.getListOfTasks();
-                        for(var i = 0; i < lst.length; i++) {
-                            model.append({ index: i, text: lst[i], type: "ItemDelegate", group: "Помещения", action: "move" });
-                        }
+                //var lst = ctxList.getListOfTasks();
+//                        for(var i = 0; i < lst.length; i++) {
+//                            model.append({ index: i, text: lst[i], type: "ItemDelegate", group: "Помещения", action: "move" });
+//                        }
             }
         }
 
