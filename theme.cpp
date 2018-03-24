@@ -48,3 +48,11 @@ void Theme::setTaskDesc(const QString &taskDesc){
             emit descChanged();
      }
 }
+
+void Theme::setListOfTasks(QList<QObject*> lessons){
+    this->lessons = lessons;
+}
+
+QList<QObject*> Theme::getListOfTasks(){
+    return this->lessons;
+}
