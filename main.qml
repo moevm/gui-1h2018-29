@@ -52,7 +52,7 @@ Window {
             id: studyTab
 
             StackView {
-                id: stack
+                id: stackMain
 
                 x: 0
                 y: 0
@@ -62,14 +62,21 @@ Window {
 
                 Component {
                     id: view
+                    Item{
 
-                    StudyTab{
-                        id: st_el
                     }
+
+                }
+
+
+                Component.onCompleted: {
+                    stackMain.push("qrc:/StudyTab.qml")
                 }
 
 
             }
+
+
 
         }
         Item {

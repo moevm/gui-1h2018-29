@@ -11,9 +11,10 @@ class ThemesModel : public QObject
 public:
     explicit ThemesModel(QObject *parent = nullptr);
 
-    QList<QObject*> getTasksList(QString themeName);
-    QList<QObject*> getThemesList();
-
+    Q_INVOKABLE QList<QObject*> getTasksList(QString themeName);
+    Q_INVOKABLE QList<QObject*> getThemesList();
+    int size();
+    Theme *at(int index);
 signals:
 
 private:

@@ -7,11 +7,21 @@ TaskElement::TaskElement(QObject *parent) : QObject(parent)
     this->completed = false;
 }
 
-TaskElement::TaskElement(QString name, int number, QObject *parent){
+TaskElement::TaskElement(QString name, int number, QString type, QList<QObject*> listPairs, QObject *parent){
 
     this->task_name = name;
     this->number = number;
+    this->type = type;
+    this->listPairs=listPairs;
     this->completed = false;
+}
+
+void TaskElement::setListPairs(QList<QObject *> listPairs) {
+    this->listPairs=listPairs;
+}
+
+QList<QObject*> TaskElement:: getListPairs() {
+    return this->listPairs;
 }
 
 int TaskElement::getNumber(){
@@ -30,4 +40,12 @@ void TaskElement::setName(QString name){
 }
 void TaskElement::setNumber(int number){
     this->number = number;
+}
+
+QString TaskElement::getType(){
+    return this->type;
+}
+
+void TaskElement::setType(QString type){
+    this->type = type;
 }

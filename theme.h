@@ -24,6 +24,7 @@ public:
     //getters
     QString getThemeName() const;
     QString getTaskDesc() const;
+    Q_INVOKABLE QObject* getTaskElement(int num);
     //setters
     void setThemeName(const QString &themeName);
     //void setTaskList(QList<Task> taskList);

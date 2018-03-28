@@ -46,14 +46,18 @@ void Controller::findTheme(QString theme){
 }
 
 QObject* Controller::getTheme(QString s) {
-    foreach (QObject* curr, this->m_list) {
+    qDebug() << s ;
+    qDebug() << "-------------------------" ;
+    foreach (QObject* curr, this->model->getThemesList()) {
         Theme *temp = qobject_cast<Theme *>(curr);
+        qDebug() << temp->getThemeName() ;
         if(temp->getThemeName() == s){
-            m_chosen = temp;
+            qDebug() << "END!!!!!!!!!!" ;
+           return curr;
         }
-        return curr;
+
     }
-    qDebug() << m_chosen->getListOfTasks() ;
+
 }
 
 ThemesModel* Controller::getThemesModel() {
@@ -63,6 +67,26 @@ ThemesModel* Controller::getThemesModel() {
 void Controller::setThemesModel(ThemesModel *themesModel)
 {
     this->model=themesModel;
+
 }
 
 
+QList<QObject*> Controller::getTasksList(QString themeName){
+    return this->model->getTasksList(themeName);
+}
+
+void Controller::setTextTheme(QString txt){
+    this->m_chosen_theme = txt;
+    qDebug() << m_chosen_theme;
+}
+QString Controller::getTextTheme(){
+    return this->m_chosen_theme;
+}
+
+int Controller::getChosenTask(){
+    return this->m_chosen_task;
+}
+
+void Controller::setChosenTask(int task){
+    m_chosen_task = task;
+}

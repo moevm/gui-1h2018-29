@@ -21,10 +21,17 @@ public:
     Controller& operator=(const Controller &other);
 
     Q_INVOKABLE QObject* getTheme(QString s);
+    Q_INVOKABLE QList<QObject*> getTasksList(QString themeName);
+    Q_INVOKABLE ThemesModel* getThemesModel();//Получить модель
+    Q_INVOKABLE void setTextTheme(QString txt);
+    Q_INVOKABLE QString getTextTheme();
+    Q_INVOKABLE int getChosenTask();
+    Q_INVOKABLE void setChosenTask(int task);
+
 
     void setEngine(QQmlApplicationEngine *engine, QQmlContext *ctxt);
     void setThemesModel(ThemesModel *themesModel);//Установить модель
-    ThemesModel* getThemesModel();//Получить модель
+
 signals:
     // Сигнал для передачи данных в qml-интерфейс
     void sendToQml(int s);
@@ -35,6 +42,8 @@ private:
 
     ThemesModel *model;//Указатель на модель
     Theme *m_chosen;
+    QString m_chosen_theme = "Практикуйся в переводе слов";
+    int m_chosen_task;
 public slots:
     //void cppSlot(QString s);
     void findTheme(QString theme);

@@ -48,5 +48,14 @@ void Theme::setListOfTasks(QList<QObject*> tasks){
 }
 
 QList<QObject*> Theme::getListOfTasks(){
+
     return this->tasks;
+//    for(int i = 0; i<this->tasks.size(); i++){
+
+//       return this->tasks[num];
+//    }
+
+}
+QObject* Theme::getTaskElement(int num){
+    return this->tasks[num];
 }

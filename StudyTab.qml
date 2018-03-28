@@ -132,12 +132,12 @@ Item {
                            }
 
                            onClicked: {
-                                //back.visible = true
-                               var theme = controller.getTheme(model.modelData.theme_name)
-                               //var list = theme.getListOfTasks();
-                               //ctxList = theme;
 
-                               stack.push("qrc:/TaskForm.qml")
+
+                               controller.setTextTheme(model.modelData.theme_name);
+
+
+                               stackMain.push("qrc:/TaskModel.qml")
                            }
                        }
 
@@ -150,6 +150,7 @@ Item {
     }
 
     ListView{
+        id: lstView
         x: 0
         y: 36
         width: 840
