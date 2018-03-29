@@ -2,18 +2,30 @@ import QtQuick 2.0
 import QtQuick.Controls 2.3
 
 Item {
-
+    id: mainTaskWindow
     property int c: 0
+    width: 840
+    height: 480
+
 
     Item {
         id: item1
-        x: 190
-        y: 105
-        width: 263
-        height: 62
+        x: 237
+        y: 117
+        width: 369
+        height: 72
 
         Text{
+           // anchors.left: mainTaskWindow.verticalCenter
             id: word
+            x: 91
+            y: 42
+            width: 187
+            height: 30
+            horizontalAlignment: 80
+            font.bold:  true
+            font.pixelSize: 25
+
         }
         Component.onCompleted: {
 
@@ -84,17 +96,26 @@ Item {
 
     TextField {
         id: textField
-        x: 189
-        y: 203
+        x: 354
+        y: 212
         width: 263
         height: 56
+        focus: false
+
+
+
+
     }
 
     Button {
         id: button
-        x: 271
-        y: 288
+        x: 389
+        y: 282
         text: qsTr("Далее")
+
+        Component.onCompleted: {
+            textField.focus = true
+        }
 
         onClicked: {
             var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
@@ -116,6 +137,8 @@ Item {
             } else {
                 word.text = "wrong! " + lst[c].word
             }
+
+            textField.focus = true
 
         }
     }
