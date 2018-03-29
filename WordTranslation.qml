@@ -22,7 +22,7 @@ Item {
             y: 42
             width: 187
             height: 30
-            horizontalAlignment: 80
+            //horizontalAlignment: 80
             font.bold:  true
             font.pixelSize: 25
 
@@ -43,6 +43,8 @@ Item {
         } else {
             word.text = qsTr("Done")
             c = 0
+            textField.visible = false
+            button.visible = false
         }
 
     }
