@@ -53,7 +53,6 @@ Window {
 
             StackView {
                 id: stackMain
-
                 x: 0
                 y: 0
                 width: 840
@@ -65,19 +64,11 @@ Window {
                     Item{
 
                     }
-
                 }
-
-
                 Component.onCompleted: {
                     stackMain.push("qrc:/StudyTab.qml")
                 }
-
-
             }
-
-
-
         }
         Item {
             id: profileTab
@@ -89,6 +80,7 @@ Window {
         Item {
             id: spritzTab
 
+            Spritz{}
 
         }
     }
