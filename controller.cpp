@@ -3,7 +3,6 @@
 Controller::Controller(QObject *parent) : QObject(parent)
 {
     this->m_engine = new QQmlApplicationEngine();
-    this->m_chosen = new Theme();
 }
 
 Controller::Controller(QList<Theme*> list,QObject *parent) : QObject(parent)
@@ -24,8 +23,7 @@ void Controller::setEngine(QQmlApplicationEngine *engine, QQmlContext *ctxt){
 Controller::Controller(const Controller &other):
         QObject(other.parent()),
         m_list(other.m_list),
-        m_engine(other.m_engine),
-        m_chosen(other.m_chosen)
+        m_engine(other.m_engine)
 {
 
 }
@@ -33,17 +31,9 @@ Controller::Controller(const Controller &other):
 Controller& Controller::operator=(const Controller &other){
     m_list = other.m_list;
     m_engine = other.m_engine;
-    m_chosen = other.m_chosen;
-}
-
-void Controller::findTheme(QString theme){
-    foreach (Theme* curr, this->m_list) {
-        if(curr->getThemeName() == theme){
-            m_chosen = curr;
-        }
-    }
 
 }
+
 
 QObject* Controller::getTheme(QString s) {
     qDebug() << "Try to find theme: " + s ;

@@ -21,7 +21,6 @@ private:
     //is Task completed
     bool completed;
 
-    QList<QString> fakeVariants;
     QList<QObject*> listPairs;
 public:
     Q_INVOKABLE QList<QObject*> getListPairs();
@@ -31,11 +30,6 @@ public:
     int getNumber();
     QString getName();
     QString getType();
-
-
-    void setFakeVariants(QList<QString> fakeVariants);
-
-    Q_INVOKABLE QList<QString> getFakeVariants();
 
     bool isCompleted();
     //setters

@@ -41,12 +41,10 @@ private:
     QList<Theme*> m_list;
 
     ThemesModel *model;//Указатель на модель
-    Theme *m_chosen;
     QString m_chosen_theme = "Практикуйся в переводе слов";
     int m_chosen_task = 0;
 public slots:
-    //void cppSlot(QString s);
-    void findTheme(QString theme);
+
 };
 
 #endif // CONTROLLER_H
