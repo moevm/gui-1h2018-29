@@ -1,4 +1,5 @@
 #include "theme.h"
+#include <QDebug>
 
 Theme::Theme(QObject *parent): QObject(parent){
 
@@ -22,10 +23,6 @@ Theme& Theme::operator=(const Theme &other){
 
 //getters
 
-
-//QList<Task> *Theme::getTaskList(){
-//    return this->lessons;
-//}
 QString Theme::getThemeName() const{
     return this->theme_name;
 }
@@ -39,9 +36,7 @@ void Theme::setThemeName(const QString &themeName){
             emit nameChanged();
         }
 }
-//void Theme::setTaskList(QList<Task> taskList){
-//    this->lessons = new QList<Task>(taskList);
-//}
+
 void Theme::setTaskDesc(const QString &taskDesc){
     if (this->task_description != taskDesc) {
             task_description = taskDesc;
@@ -49,10 +44,23 @@ void Theme::setTaskDesc(const QString &taskDesc){
      }
 }
 
-void Theme::setListOfTasks(QList<QObject*> lessons){
-    this->lessons = lessons;
+void Theme::setListOfTasks(QList<QObject*> tasks){
+    this->tasks = tasks;
 }
 
 QList<QObject*> Theme::getListOfTasks(){
-    return this->lessons;
+
+    return this->tasks;
+//    for(int i = 0; i<this->tasks.size(); i++){
+
+//       return this->tasks[num];
+//    }
+
+}
+QObject* Theme::getTaskElement(int num){
+    //if(num <= this->tasks.size()-1 && num>=0){
+        return this->tasks.at(num);
+    //} else {
+        //qDebug()<< "Something gone wrong!!! Num: " + num ;
+    //}
 }

@@ -11,6 +11,11 @@ Controller::Controller(QList<Theme*> list,QObject *parent) : QObject(parent)
     this->m_list = list;
 }
 
+Controller::Controller(ThemesModel *themesModel, QObject *parent) : QObject(parent)
+{
+    this->model=themesModel;
+}
+
 void Controller::setEngine(QQmlApplicationEngine *engine, QQmlContext *ctxt){
     this->m_engine = engine;
     this->m_ctxt = ctxt;
@@ -41,16 +46,52 @@ void Controller::findTheme(QString theme){
 }
 
 QObject* Controller::getTheme(QString s) {
-    foreach (QObject* curr, this->m_list) {
+    qDebug() << "Try to find theme: " + s ;
+    qDebug() << "-------------------------" ;
+    int counterS = 0;
+    foreach (QObject *curr, this->model->getThemesList()) {
+        qDebug() << counterS++;
         Theme *temp = qobject_cast<Theme *>(curr);
+        //qDebug() << temp->getThemeName() ;
         if(temp->getThemeName() == s){
-            m_chosen = temp;
+
+                qDebug() <<temp->getThemeName()  +  " - Found.";
+                return curr;
+
         }
 
-        return curr;
     }
-    qDebug() << m_chosen->getListOfTasks() ;
+
+}
+
+ThemesModel* Controller::getThemesModel() {
+    return this->model;
+}
+
+void Controller::setThemesModel(ThemesModel *themesModel)
+{
+    this->model=themesModel;
+
+}
 
 
+QList<QObject*> Controller::getTasksList(QString themeName){
+    return this->model->getTasksList(themeName);
+}
 
+void Controller::setTextTheme(QString txt){
+    this->m_chosen_theme = txt;
+    qDebug() << m_chosen_theme;
+}
+QString Controller::getTextTheme(){
+    return this->m_chosen_theme;
+}
+
+int Controller::getChosenTask(){
+    return this->m_chosen_task;
+    //this->m_chosen_task = 0;
+}
+
+void Controller::setChosenTask(int task){
+    m_chosen_task = task;
 }

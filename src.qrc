@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>src/search-512.png</file>
+        <file>src/back.png</file>
+        <file>src/loop.png</file>
+        <file>src/pause.png</file>
+        <file>src/play.png</file>
+        <file>src/stop.png</file>
     </qresource>
 </RCC>

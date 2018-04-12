@@ -14,10 +14,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     theme.cpp \
-    task.cpp \
     themesmodel.cpp \
     controller.cpp \
-    taskelement.cpp
+    taskelement.cpp \
+    pair.cpp
 
 RESOURCES += qml.qrc \
     src.qrc
@@ -35,7 +35,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     theme.h \
-    task.h \
     themesmodel.h \
     controller.h \
-    taskelement.h
+    taskelement.h \
+    pair.h

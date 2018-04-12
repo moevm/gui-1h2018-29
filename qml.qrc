@@ -2,7 +2,11 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
-        <file>TaskForm.qml</file>
         <file>StudyTab.qml</file>
+        <file>WordTranslation.qml</file>
+        <file>TaskModel.qml</file>
+        <file>SentTranslation.qml</file>
+        <file>checkTask.qml</file>
+        <file>Spritz.qml</file>
     </qresource>
 </RCC>
