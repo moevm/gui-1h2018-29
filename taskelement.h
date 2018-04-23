@@ -2,6 +2,7 @@
 #define TASKELEMENT_H
 
 #include <QObject>
+#include <QSettings>
 
 
 class TaskElement : public QObject
@@ -31,11 +32,12 @@ public:
     QString getName();
     QString getType();
 
-    bool isCompleted();
+    Q_INVOKABLE void isCompleted();
     //setters
     void setNumber(int number);
     void setName(QString name);
     void setType(QString type);
+    void demoPrintProgressInConsole();
     explicit TaskElement(QObject *parent = nullptr);
     TaskElement(QString name, int number, QString type, QList<QObject*> listPairs, QObject *parent = nullptr);
 

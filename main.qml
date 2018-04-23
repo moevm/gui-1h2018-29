@@ -81,6 +81,8 @@ Window {
         }
         Item {
             id: profileTab
+            MyProfile{}
+
         }
         Item {
             id: wordsTab

@@ -24,10 +24,24 @@ QString TaskElement::getName(){
     return this->task_name;
 }
 
-bool TaskElement::isCompleted(){
-    return this->completed;
+void TaskElement::isCompleted(){
+//    QSettings settings;
+//    QMap<QString, QVariant> currMap;
+//    currMap[this->task_name]= QVariant(true);
+//    settings.setValue(this->type,currMap);
+//    demoPrintProgressInConsole();
+
 }
 
+void TaskElement:: demoPrintProgressInConsole() {
+//    QSettings settings;
+//              QMap<QString, QVariant> curr = settings.value("sentenses").toMap();
+//              qDebug()<<curr.value("Animal");
+//              curr = settings.value("check").toMap();
+//              qDebug()<<curr;
+//              curr = settings.value("words").toMap();
+//              qDebug()<<curr;
+}
 void TaskElement::setName(QString name){
     this->task_name = name;
 }
@@ -46,6 +60,8 @@ void TaskElement::setType(QString type){
 void TaskElement::setListPairs(QList<QObject *> listPairs) {
     this->listPairs=listPairs;
 }
+
+
 
 QList<QObject*> TaskElement:: getListPairs() {
     return this->listPairs;

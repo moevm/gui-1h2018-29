@@ -5,6 +5,7 @@ Item {
 
     property int c: -1
     property var chosen: 0
+    property var lst
     property bool clickedOnce: false
 
     // использование Math.round() даст неравномерное распределение!
@@ -37,7 +38,7 @@ Item {
 //            radio.r3 = radioButton2
 //            radio.r4 = radioButton3
 
-            var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
+            lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
 
             //console.log(lst)
 
@@ -149,7 +150,7 @@ Item {
 
 
     function checkTask(checking, c){
-        var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
+        //var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
 
         console.log(checking)
 
@@ -266,7 +267,7 @@ Item {
             radioButton3.visible = true
             button.visible = true
 
-            var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
+            //var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
             c = -1
             setWord(lst, c)
         }

@@ -8,5 +8,6 @@
         <file>SentTranslation.qml</file>
         <file>checkTask.qml</file>
         <file>Spritz.qml</file>
+        <file>MyProfile.qml</file>
     </qresource>
 </RCC>

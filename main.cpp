@@ -10,7 +10,7 @@
 #include "theme.h"
 #include "themesmodel.h"
 #include "controller.h"
-
+#include "fstream"
 
 int main(int argc, char *argv[])
 {
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     QQmlContext *ctxt = engine.rootContext();
     Controller *controller = new Controller(model);
-
+    controller->readFile();
     QList<QObject*> context_list;
 
     ctxt->setContextProperty("controller", controller);
@@ -84,5 +84,16 @@ int main(int argc, char *argv[])
 //                         controller, SLOT(cppSlot(QVariant)));
 
 
+
+
+//    QString FileURL = "qrc:/src/completed.txt";
+//    std::ofstream fileout(FileURL.toStdString());
+
+//    fileout << controller->getCompleted();
+
+//    fileout.close();
+
+
     return app.exec();
+
 }

@@ -28,7 +28,7 @@ QList<QObject*> ThemesModel::getThemesList()
 void ThemesModel::fillListThemes()
 {
     //Theme *theme=NULL;
-    Theme *theme1 = new Theme("Практикуйся в переводе слов", "Переводи с английского языка на русский и обратно слова!");
+    Theme *theme1 = new Theme("Практикуйся в переводе слов", "Переводи с английского языка на русский и обратно слова!", 0);
 
     QList<QObject*> listPairs_animals;
     listPairs_animals.append(new Pair("Сat", "кот"));
@@ -87,7 +87,7 @@ void ThemesModel::fillListThemes()
 
     this->themesList.append(theme1);
 
-    Theme *theme2 = new Theme("Практикуйся в переводе предложений", "Переводи с английского языка на русский и обратно целые предложения!");
+    Theme *theme2 = new Theme("Практикуйся в переводе предложений", "Переводи с английского языка на русский и обратно целые предложения!", 1);
 
     QList<QObject*> listPairsSent_1;
     listPairsSent_1.append(new Pair("Cat is a animal", "кот это животное"));
@@ -115,7 +115,7 @@ void ThemesModel::fillListThemes()
     this->themesList.append(theme2);
 
 
-    Theme *theme3 = new Theme("Выбери 1 правильный вариант", "Улучшай знание грамматики!");
+    Theme *theme3 = new Theme("Выбери 1 правильный вариант", "Улучшай знание грамматики!", 2);
 
     te3 = new TaskElement("Animals", 3, "check",listPairsCheck);
 
@@ -126,11 +126,11 @@ void ThemesModel::fillListThemes()
     this->themesList.append(theme3);
 }
 
-QList<QObject*> ThemesModel::getTasksList(QString themeName)
+QList<QObject*> ThemesModel::getTasksList(int themeNum)
 {
     foreach (QObject* currThemeObject, this->themesList) {
         Theme *theme = qobject_cast<Theme*>(currThemeObject);
-        if(theme->getThemeName() == themeName){
+        if(theme->getNumber() == themeNum){
            return theme->getListOfTasks();
         }
     }
@@ -140,6 +140,6 @@ int ThemesModel::size(){
     return this->themesList.size();
 }
 
-Theme* ThemesModel::at(int index){
-    return qobject_cast<Theme*>(this->themesList.at(index));
-}
+//Theme* ThemesModel::at(int index){
+//    return qobject_cast<Theme*>(this->themesList.at(index));
+//}

@@ -17,7 +17,8 @@ class Theme:public QObject
 
 public:
     explicit Theme(QObject *parent=0);
-    Theme(const QString &name, const QString &taskDesc, QObject *parent=0);
+    Theme(const QString &name, const QString &taskDesc, int number, QObject *parent=0);
+
     Theme(const Theme &other);
     Theme& operator=(const Theme &other);
 
@@ -31,6 +32,9 @@ public:
     void setTaskDesc(const QString &taskDesc);
     void setListOfTasks(QList<QObject*> tasks);
     Q_INVOKABLE QList<QObject*> getListOfTasks();
+
+    Q_INVOKABLE int getNumber();
+    Q_INVOKABLE void setNumber(int num);
 signals:
     void nameChanged();
     void descChanged();
@@ -41,6 +45,8 @@ private:
     QString theme_name ;
     //Task description
     QString task_description;
+
+    int m_number = 0;
 };
 
 #endif // THEME_H

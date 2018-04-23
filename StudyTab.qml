@@ -133,8 +133,8 @@ Item {
 
                            onClicked: {
 
-
-                               controller.setTextTheme(model.modelData.theme_name);
+                               lstView.currentIndex = index
+                               controller.setTextTheme(lstView.currentIndex);
 
 
                                stackMain.push("qrc:/TaskModel.qml")

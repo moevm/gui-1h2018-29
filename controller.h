@@ -20,15 +20,19 @@ public:
     Controller(const Controller &other);
     Controller& operator=(const Controller &other);
 
-    Q_INVOKABLE QObject* getTheme(QString s);
-    Q_INVOKABLE QList<QObject*> getTasksList(QString themeName);
+    ~Controller();
+
+    Q_INVOKABLE QObject* getTheme(int s);
+    Q_INVOKABLE QList<QObject*> getTasksList(int themeNum);
     Q_INVOKABLE ThemesModel* getThemesModel();//Получить модель
-    Q_INVOKABLE void setTextTheme(QString txt);
-    Q_INVOKABLE QString getTextTheme();
+    Q_INVOKABLE void setTextTheme(int num);
+    Q_INVOKABLE int getTextTheme();
     Q_INVOKABLE int getChosenTask();
     Q_INVOKABLE void setChosenTask(int task);
-
-
+    Q_INVOKABLE int getCompleted();
+    Q_INVOKABLE void setCompleted(int q);
+    Q_INVOKABLE void addCompleted();
+    void readFile();
     void setEngine(QQmlApplicationEngine *engine, QQmlContext *ctxt);
     void setThemesModel(ThemesModel *themesModel);//Установить модель
 
@@ -41,8 +45,11 @@ private:
     QList<Theme*> m_list;
 
     ThemesModel *model;//Указатель на модель
-    QString m_chosen_theme = "Практикуйся в переводе слов";
+    int m_chosen_theme = 0;
     int m_chosen_task = 0;
+
+    int percent;
+
 public slots:
 
 };

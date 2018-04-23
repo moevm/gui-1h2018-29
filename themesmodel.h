@@ -11,7 +11,7 @@ class ThemesModel : public QObject
 public:
     explicit ThemesModel(QObject *parent = nullptr);
 
-    Q_INVOKABLE QList<QObject*> getTasksList(QString themeName);
+    Q_INVOKABLE QList<QObject*> getTasksList(int themeNum);
     Q_INVOKABLE QList<QObject*> getThemesList();
     int size();
     Theme *at(int index);

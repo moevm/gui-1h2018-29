@@ -5,7 +5,7 @@ Item {
     id: item2
 
     property int c: 0
-
+    property var lst
     Item {
         id: item1
         x: 189
@@ -24,7 +24,7 @@ Item {
         }
         Component.onCompleted: {
 
-            var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
+            lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
             setWord(lst, c)
 
         }
@@ -79,10 +79,9 @@ Item {
             anchors.topMargin: 0
             width: 83
             onClicked: {
-                //parent.visible = false
-                c = 0
+                //parent.visible = false 
                 stackMain.pop()
-                //controller.setChosenTask(0);
+                controller.setChosenTask(0);
             }
         }
     }
@@ -113,7 +112,7 @@ Item {
         anchors.rightMargin: 305
 
         onClicked: {
-            var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
+            // lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
             if(lst[c].meaning.toLowerCase() === textField.text.toLowerCase()){
                 if(c < lst.length){
                     c++
@@ -155,7 +154,7 @@ Item {
             textField.visible = true
             button.visible = true
 
-            var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
+            //var lst = controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).getListPairs();
             c = 0
             setWord(lst, c)
         }

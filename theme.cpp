@@ -4,21 +4,23 @@
 Theme::Theme(QObject *parent): QObject(parent){
 
 }
-Theme::Theme(const QString &theme, const QString &taskDesc, QObject *parent)
-    : QObject(parent), theme_name(theme), task_description(taskDesc){
+Theme::Theme(const QString &theme, const QString &taskDesc, int number, QObject *parent)
+    : QObject(parent), theme_name(theme), task_description(taskDesc), m_number(number){
 
 }
 
 Theme::Theme(const Theme &other):
         QObject(other.parent()),
         theme_name(other.theme_name),
-        task_description(other.task_description){
+        task_description(other.task_description),
+        m_number(other.m_number){
 
 }
 
 Theme& Theme::operator=(const Theme &other){
     theme_name = other.theme_name;
     task_description = other.task_description;
+    m_number = other.m_number;
 }
 
 //getters
@@ -58,9 +60,18 @@ QList<QObject*> Theme::getListOfTasks(){
 
 }
 QObject* Theme::getTaskElement(int num){
-    //if(num <= this->tasks.size()-1 && num>=0){
+        qDebug() <<  num;
+    if(this->tasks.at(num) != NULL){
         return this->tasks.at(num);
-    //} else {
-        //qDebug()<< "Something gone wrong!!! Num: " + num ;
-    //}
+    } else {
+
+        qDebug()<< "Something gone wrong!!! Num: " + num ;
+    }
+}
+
+int Theme::getNumber(){
+    return this->m_number;
+}
+void Theme::setNumber(int num){
+    this->m_number = num;
 }

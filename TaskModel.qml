@@ -70,6 +70,7 @@ Item {
             for(var i = 0; i < lst.length; i++) {
                 model.append({ task_name: lst[i].task_name, type: lst[i].type, text: lst[i].number });
 
+                console.log(lst + " - tasks list was read right.")
 
             }
 
@@ -144,19 +145,22 @@ Item {
 //                                 console.log("###################################")
 //                                 console.log("\n")
 //                                 console.log("\n")
+                                 tskModel.currentIndex = 0
                                  stackMain.push("qrc:/WordTranslation.qml")
                            }
 
                            if(model.type === "sentenses"){
                                  controller.setChosenTask(tskModel.currentIndex);
+                                 tskModel.currentIndex = 0
                                  stackMain.push("qrc:/SentTranslation.qml")
                            }
                            if(model.type === "check"){
                                  controller.setChosenTask(tskModel.currentIndex);
+                                 tskModel.currentIndex = 0
                                  stackMain.push("qrc:/checkTask.qml")
                            }
 
-                           tskModel.currentIndex = 0
+
                            //stackMain.push("qrc:/WordTranslation.qml")
                        }
                    }
