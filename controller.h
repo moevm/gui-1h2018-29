@@ -32,6 +32,7 @@ public:
     Q_INVOKABLE int getCompleted();
     Q_INVOKABLE void setCompleted(int q);
     Q_INVOKABLE void addCompleted();
+    Q_INVOKABLE int getNumberDoneTasks();
     void readFile();
     void setEngine(QQmlApplicationEngine *engine, QQmlContext *ctxt);
     void setThemesModel(ThemesModel *themesModel);//Установить модель

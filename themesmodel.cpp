@@ -67,9 +67,9 @@ void ThemesModel::fillListThemes()
     listPairsCheck.append(new Pair("Elephant is ...", "big", "small", "red", "atomic"));
 
 
-    TaskElement *te1 = new TaskElement("Animals", 1, "words",listPairs_animals);
-    TaskElement *te2 = new TaskElement("House", 2, "words",listPairs_house);
-    TaskElement *te3 = new TaskElement("Directions", 3, "words",listPairs_directions);
+    TaskElement *te1 = new TaskElement("Animals", 0, "words",listPairs_animals);
+    TaskElement *te2 = new TaskElement("House", 1, "words",listPairs_house);
+    TaskElement *te3 = new TaskElement("Directions", 2, "words",listPairs_directions);
 
 
     QList<QObject*> temp_lst = {te1, te2, te3};
@@ -104,11 +104,11 @@ void ThemesModel::fillListThemes()
     listPairsSent_2.append(new Pair("Your 'Windows' is updating", "ваш 'windows' обновляется"));
 
 
-    te1 = new TaskElement("Animals", 1, "sentenses",listPairsSent_1);
-    te2 = new TaskElement("Computers", 2, "sentenses",listPairsSent_2);
+    te1 = new TaskElement("Animals", 0, "sentenses",listPairsSent_1);
+    te2 = new TaskElement("Computers", 1, "sentenses",listPairsSent_2);
 
 
-    temp_lst = {te1, te2, te3};
+    temp_lst = {te1, te2};
 
     theme2->setListOfTasks(temp_lst);
 
@@ -117,7 +117,7 @@ void ThemesModel::fillListThemes()
 
     Theme *theme3 = new Theme("Выбери 1 правильный вариант", "Улучшай знание грамматики!", 2);
 
-    te3 = new TaskElement("Animals", 3, "check",listPairsCheck);
+    te3 = new TaskElement("Animals", 0, "check",listPairsCheck);
 
     temp_lst = {te3};
 

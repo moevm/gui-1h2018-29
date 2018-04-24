@@ -35,6 +35,7 @@ Item {
             word.text = lst[i].word
         } else {
             word.text = qsTr("Done")
+            controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).setCompleted();
             textField.visible = false
             button.visible = false
 

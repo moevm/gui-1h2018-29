@@ -16,6 +16,17 @@ TaskElement::TaskElement(QString name, int number, QString type,QList<QObject*> 
     this->completed = false;
 }
 
+bool TaskElement::isCompleted() {
+
+    QSettings settings("MySoft", "Star Runner");
+    QString key = this->type + this->task_name;
+
+    if(settings.value(key).toString()=="true") {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 int TaskElement::getNumber(){
     return this->number;
@@ -24,24 +35,13 @@ QString TaskElement::getName(){
     return this->task_name;
 }
 
-void TaskElement::isCompleted(){
-//    QSettings settings;
-//    QMap<QString, QVariant> currMap;
-//    currMap[this->task_name]= QVariant(true);
-//    settings.setValue(this->type,currMap);
-//    demoPrintProgressInConsole();
-
+void TaskElement::setCompleted(){
+    QSettings settings("MySoft", "Star Runner");
+    QString key = this->type + this->task_name;
+    settings.setValue(key,"true");
+    settings.sync();
 }
 
-void TaskElement:: demoPrintProgressInConsole() {
-//    QSettings settings;
-//              QMap<QString, QVariant> curr = settings.value("sentenses").toMap();
-//              qDebug()<<curr.value("Animal");
-//              curr = settings.value("check").toMap();
-//              qDebug()<<curr;
-//              curr = settings.value("words").toMap();
-//              qDebug()<<curr;
-}
 void TaskElement::setName(QString name){
     this->task_name = name;
 }

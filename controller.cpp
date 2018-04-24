@@ -25,6 +25,25 @@ void Controller::setEngine(QQmlApplicationEngine *engine, QQmlContext *ctxt){
     this->m_ctxt = ctxt;
 }
 
+int Controller::getNumberDoneTasks(){
+    int count = 0;
+    int i = 0;
+    foreach (QObject *curr, this->model->getThemesList()) {
+        Theme *temp = qobject_cast<Theme *>(curr);
+        QList<QObject*> list = temp->getListOfTasks();
+        int k = 0;
+        if(i==0) k = 3;
+        if(i==1) k = 2;
+        if(i==2) k = 1;
+        for(int j = 0; j < k; j++) {
+           TaskElement *task = qobject_cast<TaskElement *>(list.at(j));
+           if(task->isCompleted()) count++;
+        }
+        i++;
+    }
+    return count;
+}
+
 Controller::Controller(const Controller &other):
         QObject(other.parent()),
         m_list(other.m_list),
@@ -87,8 +106,9 @@ QObject* Controller::getTheme(int s) {
         //qDebug() << temp->getThemeName() ;
         if(temp->getNumber() == s && temp != NULL){
 
-                qDebug() <<temp->getThemeName()  +  " - Found.";
-                if(curr != NULL) return curr;
+                qDebug() <<temp;
+
+                if(temp != NULL) return temp;
 
         }
 
