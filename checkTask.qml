@@ -92,6 +92,7 @@ Item {
 
         } else {
             word.text = qsTr("Done")
+            controller.getTheme(controller.getTextTheme()).getTaskElement(controller.getChosenTask()).setCompleted();
             radioButton.visible = false
             radioButton1.visible = false
             radioButton2.visible = false

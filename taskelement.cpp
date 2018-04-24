@@ -39,7 +39,6 @@ void TaskElement::setCompleted(){
     QSettings settings("MySoft", "Star Runner");
     QString key = this->type + this->task_name;
     settings.setValue(key,"true");
-    settings.sync();
 }
 
 void TaskElement::setName(QString name){
