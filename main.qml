@@ -30,9 +30,6 @@ Window {
             text: qsTr("Profile")
         }
         TabButton {
-            text: qsTr("Words")
-        }
-        TabButton {
             text: qsTr("Spritz")
         }
     }
@@ -83,9 +80,6 @@ Window {
             id: profileTab
             MyProfile{}
 
-        }
-        Item {
-            id: wordsTab
         }
 
         Item {
