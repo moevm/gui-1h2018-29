@@ -1,6 +1,6 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
-import QtQuick.Controls 2.3
+import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
 import QtGraphicalEffects 1.0
@@ -165,11 +165,22 @@ Item {
                        }
                    }
 
-        }
+            }
 
 
 
 
+    }
+
+    Label {
+        id: label
+        x: 8
+        y: 51
+        width: 155
+        height: 22
+        text: qsTr("Задания:")
+        font.pointSize: 14
+        color: "#555555"
     }
 
 
