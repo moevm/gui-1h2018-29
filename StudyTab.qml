@@ -1,6 +1,6 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
-import QtQuick.Controls 2.3
+import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Material 2.0
 import QtGraphicalEffects 1.0
@@ -39,7 +39,7 @@ Item {
             id: lab
             x: 0
             y: 0
-            text: "v1.0"
+            text: "v1.4"
             font.pixelSize: 14
             font.italic: true
         }
@@ -50,30 +50,17 @@ Item {
             height: 35
 
             anchors.right: parent.right
-            TextField {
-                id: textField
-                anchors.left: parent.left
-                width: 161
-                height: 40
-                text: qsTr("Text Field")
-            }
 
-            Button {
-                anchors.right: parent.right
-                id: button
+        }
 
-                width: 40
-                height: 40
-                Image {
-                    anchors.fill: parent
-                    anchors.margins: 5
-                    height: 30
-                    width: 30
-                    id: search
-                    source: "/src/search-512.png"
-                }
-            }
-
+        Label {
+            id: label
+            x: 8
+            y: 35
+            width: 358
+            height: 24
+            text: "Темы: "
+            font.pointSize: 14
         }
     }
 
@@ -152,9 +139,9 @@ Item {
     ListView{
         id: lstView
         x: 0
-        y: 36
+        y: 59
         width: 840
-        height: 388
+        height: 365
         anchors.leftMargin: 0
         anchors.rightMargin: 0
         anchors.left: parent.left

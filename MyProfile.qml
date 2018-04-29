@@ -73,9 +73,10 @@ Item {
 
         Text{
             y: 19
+            id: progressPercent
             anchors.left: parent.horizontalCenter
 
-            text: "Это " + controller.getNumberDoneTasks() / 6 * 100 + "% от курса.";
+            text: ""
             anchors.leftMargin: -167
 
             font.pointSize: 14
@@ -220,6 +221,8 @@ Item {
 
     function setProgress(){
         progress.text = "Вы завершили " + controller.getNumberDoneTasks()  + " из 6 заданий!"
+        progressPercent.text =  "Это " + Math.round((controller.getNumberDoneTasks() / 6 * 100)) + "% от курса.";
+
     }
 
     function setPictureAndName(){
