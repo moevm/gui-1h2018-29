@@ -162,6 +162,23 @@ void Controller::addCompleted(){
     this->percent++;
 }
 
+void Controller::setProfile(QString Name, QString File){
+    QSettings settings("MySoft", "Star Runner");
+    QString key1 = "userName";
+    QString key2 = "userPhoto";
+    settings.setValue(key1, Name);
+    settings.setValue(key2, File);
+}
+
+QString Controller::getSettingsItem(QString key) {
+
+    QSettings settings("MySoft", "Star Runner");
+    return settings.value(key).toString();
+
+}
+
+
+
 Controller::~Controller(){
 
     this->percent = 7;

@@ -39,3 +39,4 @@ HEADERS += \
     controller.h \
     taskelement.h \
     pair.h
+

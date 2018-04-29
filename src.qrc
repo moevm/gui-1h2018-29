@@ -6,5 +6,7 @@
         <file>src/pause.png</file>
         <file>src/play.png</file>
         <file>src/stop.png</file>
+        <file>src/edit.png</file>
+        <file>src/Man_silhouette.svg.png</file>
     </qresource>
 </RCC>

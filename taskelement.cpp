@@ -41,6 +41,8 @@ void TaskElement::setCompleted(){
     settings.setValue(key,"true");
 }
 
+
+
 void TaskElement::setName(QString name){
     this->task_name = name;
 }

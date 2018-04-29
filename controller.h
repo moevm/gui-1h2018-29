@@ -33,6 +33,10 @@ public:
     Q_INVOKABLE void setCompleted(int q);
     Q_INVOKABLE void addCompleted();
     Q_INVOKABLE int getNumberDoneTasks();
+    Q_INVOKABLE void setProfile(QString Name, QString File);
+    Q_INVOKABLE QString getSettingsItem(QString key);
+    //Q_INVOKABLE void getProfile();
+
     void readFile();
     void setEngine(QQmlApplicationEngine *engine, QQmlContext *ctxt);
     void setThemesModel(ThemesModel *themesModel);//Установить модель

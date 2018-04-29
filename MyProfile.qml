@@ -1,6 +1,16 @@
 import QtQuick 2.5
+import QtQuick.Window 2.2
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.3
+import QtQuick.Controls.Material 2.0
+import QtGraphicalEffects 1.0
+import QtQuick.Dialogs 1.0
+import QtQuick.Dialogs 1.3
 
 Item {
+
+    property var source: imageOriginal.source
+    property var radius: 20
 
 
     Connections {
@@ -15,8 +25,8 @@ Item {
 
 
     Text{
-        x: 166
-        y: 121
+        x: 41
+        y: 109
         width: 191
         height: 63
         text: "Ваш прогресс в приложении: "
@@ -39,7 +49,7 @@ Item {
             text: setProgress()
             anchors.left: parent.horizontalCenter
 
-            anchors.leftMargin: -159
+            anchors.leftMargin: -280
 
             font.pointSize: 14
 
@@ -56,8 +66,8 @@ Item {
 
     Item {
         id: item2
-        x: 166
-        y: 263
+        x: 41
+        y: 227
         width: 334
         height: 200
 
@@ -72,7 +82,148 @@ Item {
         }
     }
 
+    Item{
+        x: 0
+        y: 0
+        width: 217
+        height: 103
+
+
+        Label {
+            horizontalAlignment: Text.AlignRight
+            id: label
+            x: 432
+            y: 24
+            width: 106
+            height: 36
+            text: controller.getSettingsItem("userName")
+            font.pointSize: 15
+        }
+
+        Item {
+            x: 544
+            y: 8
+            width: 80
+            height: 80
+
+            Image {
+                id: imageOriginal
+                anchors.fill: parent
+                source: controller.getSettingsItem("userPhoto")
+                visible: false
+            }
+
+            Rectangle {
+                id: rectangleMask
+                anchors.fill: parent
+                radius: 0.5*height
+                visible: false
+            }
+
+            OpacityMask {
+                id: opacityMask
+                anchors.fill: imageOriginal
+                source: imageOriginal
+                maskSource: rectangleMask
+            }
+        }
+
+        Image {
+            id: edit
+            x: 575
+            y: 94
+            source: "qrc:/src/edit.png"
+
+            height: 30
+            width: 34
+
+
+            MouseArea{
+                anchors.leftMargin: 0
+                anchors.topMargin: 0
+                anchors.rightMargin: 0
+                anchors.bottomMargin: 0
+                anchors.fill: parent
+
+
+
+                onClicked: dialog.open()
+            }
+        }
+    }
+
+    Dialog{
+
+        height: 300
+        width: 400
+
+        id: dialog
+
+        TextField{
+            placeholderText: qsTr("Введите имя")
+            maximumLength: 10
+            id: name
+            x: 15
+            y: 15
+            height: 40
+            width: 200
+
+        }
+
+        TextField{
+            placeholderText: qsTr("Путь к файлу")
+            x: 15
+            y: 70
+            id: chosenAvatar
+            height: 40
+            width: 200
+
+            //visible: false
+        }
+
+        Button{
+            y: 70
+            x: 120
+            text: qsTr("Выберите файл")
+            anchors.left: chosenAvatar.right
+            onClicked: fileDialog.open()
+        }
+
+
+        onAccepted: {
+            imageOriginal.source = (chosenAvatar.text == "") ? imageOriginal.source : chosenAvatar.text
+            label.text = (name.text == "") ? label.text : name.text
+
+            controller.setProfile(name.text, imageOriginal.source)
+        }
+
+    }
+
+
+    FileDialog {
+        id: fileDialog
+        title: "Please choose a file"
+        folder: shortcuts.home
+        nameFilters: [ "Image Files (*.jpg; *.jpeg; *.png);" ]
+        onAccepted: {
+
+            chosenAvatar.text = fileDialog.fileUrl
+            //setPicture(fileDialog.fileUrl); // получаем директорию файла
+            close();
+        }
+        onRejected: {
+            close()
+        }
+    }
+
+
+
     function setProgress(){
         progress.text = "Вы завершили " + controller.getNumberDoneTasks()  + " из 6 заданий!"
+    }
+
+    function setPictureAndName(){
+
+
     }
 }
