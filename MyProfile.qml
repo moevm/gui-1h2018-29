@@ -9,8 +9,11 @@ import QtQuick.Dialogs 1.3
 
 Item {
 
+    id: mainW
+
     property var source: imageOriginal.source
     property var radius: 20
+    property var chosenAvatar: ""
 
 
     Connections {
@@ -171,28 +174,20 @@ Item {
 
         }
 
-        TextField{
-            placeholderText: qsTr("Путь к файлу")
-            x: 15
-            y: 70
-            id: chosenAvatar
-            height: 40
-            width: 200
 
-            //visible: false
-        }
+
 
         Button{
             y: 70
-            x: 120
+            x: 15
             text: qsTr("Выберите файл")
-            anchors.left: chosenAvatar.right
+            //anchors.left: chosenAvatar.right
             onClicked: fileDialog.open()
         }
 
 
         onAccepted: {
-            imageOriginal.source = (chosenAvatar.text == "") ? imageOriginal.source : chosenAvatar.text
+            imageOriginal.source = (chosenAvatar == "") ? imageOriginal.source : chosenAvatar
             label.text = (name.text == "") ? label.text : name.text
 
             controller.setProfile(name.text, imageOriginal.source)
@@ -208,7 +203,7 @@ Item {
         nameFilters: [ "Image Files (*.jpg; *.jpeg; *.png);" ]
         onAccepted: {
 
-            chosenAvatar.text = fileDialog.fileUrl
+            mainW.chosenAvatar = fileDialog.fileUrl
             //setPicture(fileDialog.fileUrl); // получаем директорию файла
             close();
         }
